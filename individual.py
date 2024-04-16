@@ -5,8 +5,6 @@ import argparse
 import json
 import os.path
 from datetime import datetime
-import sys
-from dotenv import load_dotenv
 
 from validation import ListWorkers
 
@@ -107,23 +105,15 @@ def show_workers(lst):
 
 
 def main(command_line=None):
-    load_dotenv()
     # Создать родительский парсер для определения имени файла.
     file_parser = argparse.ArgumentParser(add_help=False)
     file_parser.add_argument(
-        "-f",
-        "--file",
-        action="store",
-        required=False,
-        help="The data file name")
+        "filename", action="store", help="The data file name"
+    )
 
     # Создать основной парсер командной строки.
-    parser = argparse.ArgumentParser("workers")
-    parser.add_argument(
-        "--version",
-        action="version",
-        version="%(prog)s 0.1.0"
-    )
+    parser = argparse.ArgumentParser(description="workers")
+    parser.add_argument("--version", action="version", version="%(prog)s 0.1.0")
     subparsers = parser.add_subparsers(dest="command")
 
     # Создать субпарсер для добавления работника.
@@ -165,18 +155,10 @@ def main(command_line=None):
     # Выполнить разбор аргументов командной строки.
     args = parser.parse_args(command_line)
 
-    # Получить имя файла.
-    data_file = args.file
-    if not data_file:
-        data_file = os.getenv("WORKERS_DATA")
-    if not data_file:
-        print("The data file name is absent", file=sys.stderr)
-        sys.exit(1)
-
     # Загрузить всех работников из файла, если файл существует.
     is_dirty = False
-    if os.path.exists(data_file):
-        lst = load_workers(data_file)
+    if os.path.exists(args.filename):
+        lst = load_workers(args.filename)
     else:
         lst = []
 
