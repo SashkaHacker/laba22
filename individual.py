@@ -3,8 +3,8 @@
 
 import argparse
 import json
-import os.path
 from datetime import datetime
+from pathlib import Path
 
 from validation import ListWorkers
 
@@ -157,8 +157,10 @@ def main(command_line=None):
 
     # Загрузить всех работников из файла, если файл существует.
     is_dirty = False
-    if os.path.exists(args.filename):
-        lst = load_workers(args.filename)
+    # Добавление полного пути к файлу.
+    path_to_home = Path.home().joinpath(args.filename)
+    if path_to_home.exists():
+        lst = load_workers(path_to_home)
     else:
         lst = []
 
