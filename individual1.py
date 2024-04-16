@@ -157,7 +157,8 @@ def main(command_line=None):
 
     # Загрузить всех работников из файла, если файл существует.
     is_dirty = False
-    # Добавление полного пути к файлу.
+
+    # Добавление домашней директории к пути.
     path_to_home = Path.home().joinpath(args.filename)
     if path_to_home.exists():
         lst = load_workers(path_to_home)
