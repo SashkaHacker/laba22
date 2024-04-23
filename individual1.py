@@ -177,7 +177,7 @@ def main(command_line=None):
 
     # Сохранить данные в файл, если список работников был изменен.
     if is_dirty:
-        save_workers(args.filename, lst)
+        save_workers(path_to_home, lst)
 
 
 if __name__ == "__main__":
