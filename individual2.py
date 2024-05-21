@@ -4,6 +4,9 @@
 import argparse
 from pathlib import Path
 
+# Разработайте аналог утилиты tree в Linux. Используйте возможности модуля argparse для
+# управления отображением дерева каталогов файловой системы. Добавьте дополнительные
+# уникальные возможности в данный программный продукт.
 
 def tree(directory, level, max_items):
     def print_tree(folder, prefix="", level=-1):
