@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import argparse
-from pathlib import Path
-
 # Разработайте аналог утилиты tree в Linux. Используйте возможности модуля argparse для
 # управления отображением дерева каталогов файловой системы. Добавьте дополнительные
 # уникальные возможности в данный программный продукт.
+
+
+import argparse
+from pathlib import Path
+
 
 def tree(directory, level, max_items):
     def print_tree(folder, prefix="", level=-1):
