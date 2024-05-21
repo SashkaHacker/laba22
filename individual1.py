@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import argparse
-import json
-from datetime import datetime
-from pathlib import Path
-
-from validation import ListWorkers
-
 # Для своего варианта лабораторной работы 2.17 добавьте возможность хранения файла данных
 # в домашнем каталоге пользователя. Для выполнения операций с файлами необходимо
 # использовать модуль pathlib .
 # вариант - 11
+
+
+import argparse
+import json
+from datetime import datetime
+from pathlib import Path
+from validation import ListWorkers
 
 
 def add_worker(lst, surname, name, phone, date):
